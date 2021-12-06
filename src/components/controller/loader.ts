@@ -1,5 +1,5 @@
-import ILoader from './interface';
 import { DataResponse } from '../types/data-response';
+import ILoader from './interface';
 
 type Options = {
     sources?: string;

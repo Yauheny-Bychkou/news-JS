@@ -1,9 +1,20 @@
+import { DataResponse } from '../types/data-response';
+type Options = {
+    sources?: string;
+    apiKey?: string;
+};
+
+type OptionsResp = {
+    endpoint: string;
+    options?: Options;
+};
+
 interface ILoader {
-    // baseLink: string;
-    // options: {};
-    // getResp: (obj: { endpoint: string; options?: {} | undefined }, callback: () => void) => void;
-    // errorHandler: (res: {}) => void;
-    // makeUrl: (options: { sources: string }, endpoint: string) => string;
-    // load: (method: string, endpoint: string, callback: () => void, options: string | {}) => void;
+    baseLink: string;
+    options: Options;
+    getResp: ({ endpoint: string, options: Options }: OptionsResp, callback: (data: DataResponse) => void) => void;
+    errorHandler: (res: Response) => void;
+    makeUrl: (options: Options, endpoint: string) => string;
+    load: (method: string, endpoint: string, callback: (data: DataResponse) => void, options: Options) => void;
 }
 export default ILoader;
